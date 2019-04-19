@@ -26,6 +26,7 @@ public class Window extends JFrame
     private JPanel rightSide;
     private JPanel hammingDistance;
     private JPanel sliderToStation;
+    private JPanel compareWithHD;
     private JFrame jf;
     
     private JButton showStation;
@@ -46,10 +47,11 @@ public class Window extends JFrame
     
     private JSlider hammingdist;
     
-    private JComboBox stationList;
+    private static JComboBox stationList;
     
     public Window()
     {
+        //TODO: resize all buttons
         //initialize JFrame and JPanels, add layout managers
         jf = new JFrame("Hamming Distance");
         jf.setSize(400,800);
@@ -62,6 +64,7 @@ public class Window extends JFrame
         rightSide.setLayout(new BorderLayout());
         hammingDistance = new JPanel();
         sliderToStation = new JPanel(new BorderLayout());
+        compareWithHD = new JPanel(new BorderLayout());
         
         //adds the top JLabel and textare to the left Jpanel     
         enterHammingDistance = new JLabel("Enter Hamming Distance:");
@@ -82,13 +85,26 @@ public class Window extends JFrame
         showStationText = addTextArea(10, 30, true, "");
         sliderToStation.add(showStationText, BorderLayout.SOUTH);
         
+        //creates the JLabel and dropdown menu
+        compareWith = new JLabel("Compare With:");
+        //FIXME
+        String[] as = new String[] {"as", "df"};
+        stationList = new JComboBox<String>(as);
+        calculateHD = new JButton("Calculate HD");
+        compareWithHD.add(compareWith, BorderLayout.WEST);
+        compareWithHD.add(stationList, BorderLayout.EAST);
+        compareWithHD.add(calculateHD, BorderLayout.SOUTH);
+        
         //add sub Jpanels to leftside jpanel
         leftSide.add(hammingDistance);
         leftSide.add(sliderToStation);
+        leftSide.add(compareWithHD);
         
         //adds jpanels to the jframe
         jf.add(leftSide, BorderLayout.WEST);
         jf.add(rightSide, BorderLayout.EAST);
+        
+        pack();
         
         //sets the JFrame to be visible
         jf.setVisible(true);
