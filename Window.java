@@ -25,6 +25,7 @@ public class Window extends JFrame
     private JPanel leftSide;
     private JPanel rightSide;
     private JPanel hammingDistance;
+    private JPanel sliderToStation;
     private JFrame jf;
     
     private JButton showStation;
@@ -60,6 +61,7 @@ public class Window extends JFrame
         rightSide = new JPanel();
         rightSide.setLayout(new BorderLayout());
         hammingDistance = new JPanel();
+        sliderToStation = new JPanel(new BorderLayout());
         
         //adds the top JLabel and textare to the left Jpanel     
         enterHammingDistance = new JLabel("Enter Hamming Distance:");
@@ -67,8 +69,14 @@ public class Window extends JFrame
         hammingDistText = addTextArea(1, 20, false, "2");
         hammingDistance.add(enterHammingDistance);
         hammingDistance.add(hammingDistText);
-        leftSide.add(hammingDistance);
         
+        //adds the slider to the left side frame
+        hammingdist = addSlider(1, 4, true, true);
+        sliderToStation.add(hammingdist, BorderLayout.NORTH);
+        
+        //add sub Jpanels to leftside jpanel
+        leftSide.add(hammingDistance);
+        leftSide.add(sliderToStation);
         
         //adds jpanels to the jframe
         jf.add(leftSide, BorderLayout.WEST);
@@ -104,5 +112,17 @@ public class Window extends JFrame
     {
         JLabel jl = new JLabel(str);
         return jl;
+    }
+    
+    public JSlider addSlider(int min, int max, boolean ticks, boolean labels)
+    {
+        JSlider js = new JSlider(JSlider.HORIZONTAL);
+        js.setMinimum(min);
+        js.setMaximum(max);
+        js.setPaintTicks(ticks);
+        js.setPaintLabels(labels);
+        js.setPaintTrack(ticks);
+        js.setMajorTickSpacing(1);
+        return js;
     }
 }
