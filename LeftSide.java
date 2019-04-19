@@ -65,12 +65,12 @@ public class LeftSide
         //adds the top JLabel and textare to the left Jpanel     
         enterHammingDistance = new JLabel("Enter Hamming Distance:");
         //TODO: Get this to update based on the slider
-        hammingDistText = (JTextField) createComponents.addTextArea(1, 20, false, true, "2");
+        hammingDistText = (JTextField) CreateComponents.addTextArea(1, 20, false, true, "2");
         hammingDistance.add(enterHammingDistance);
         hammingDistance.add(hammingDistText);
         
         //adds the slider to the left side frame
-        hammingdist = createComponents.addSlider(1, 4, true, true);
+        hammingdist = CreateComponents.addSlider(1, 4, true, true);
         sliderToStation.add(hammingdist, BorderLayout.NORTH);
         
         //creates the show station button and adds it to the jpanel
@@ -78,7 +78,7 @@ public class LeftSide
         sliderToStation.add(showStation, BorderLayout.CENTER);
         
         //creates a text area to enter a mesonet station
-        showStationText = (JTextArea) createComponents.addTextArea(10, 30, true, false, "");
+        showStationText = (JTextArea) CreateComponents.addTextArea(10, 30, true, false, "");
         sliderToStation.add(showStationText, BorderLayout.SOUTH);
         
         //creates the JLabel and dropdown menu
@@ -98,12 +98,12 @@ public class LeftSide
         distance3 = new JLabel("Distance 3");
         distance4 = new JLabel("Distance 4");
         addStation = new JButton("Add Station");
-        distance0Text = (JTextField)createComponents.addTextArea(1, 10, false, true, "1");
-        distance1Text = (JTextField)createComponents.addTextArea(1, 10, false, true, "2");
-        distance2Text = (JTextField)createComponents.addTextArea(1, 10, false, true, "3");
-        distance3Text = (JTextField)createComponents.addTextArea(1, 10, false, true, "4");
-        distance4Text = (JTextField)createComponents.addTextArea(1, 10, false, true, "5");
-        addStationText = (JTextField)createComponents.addTextArea(1, 10, true, true, "");
+        distance0Text = (JTextField)CreateComponents.addTextArea(1, 10, false, true, "1");
+        distance1Text = (JTextField)CreateComponents.addTextArea(1, 10, false, true, "2");
+        distance2Text = (JTextField)CreateComponents.addTextArea(1, 10, false, true, "3");
+        distance3Text = (JTextField)CreateComponents.addTextArea(1, 10, false, true, "4");
+        distance4Text = (JTextField)CreateComponents.addTextArea(1, 10, false, true, "5");
+        addStationText = (JTextField)CreateComponents.addTextArea(1, 10, true, true, "");
         
         //add labels, button, and text areas to the Jpanels
         distancePanel0.add(distance0, BorderLayout.WEST);

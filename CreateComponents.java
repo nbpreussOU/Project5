@@ -3,7 +3,7 @@ import javax.swing.JSlider;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-public class createComponents
+public class CreateComponents
 {
     public static JButton addButton(String str)
     {

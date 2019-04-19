@@ -22,7 +22,7 @@ public class Window extends JFrame
     {
         //initialize JFrame and JPanels, add layout managers
         jf = new JFrame("Hamming Distance");
-        jf.setSize(400,800);
+        jf.setSize(800,800);
         jf.setDefaultCloseOperation(EXIT_ON_CLOSE);
         jf.setLayout(new BorderLayout());
         
