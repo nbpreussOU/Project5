@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.TreeSet;
 
 public class HammingDist
@@ -38,13 +39,17 @@ public class HammingDist
         
     }
     
-    public int[] getHammingDistance(String stID)
+    public HashMap<Integer, String> getHammingDistance(String stID)
     {
         int temp;
-        int[] arrayHD = new int[5];
+        int[] intHD = new int[5];
+        String[] stringHD = new String[5];
         TreeSet<String> ts = getListStations();
+        HashMap<Integer, String> hm  = new HashMap<>();
+        
         //populates arrays with 0 to start
-        Arrays.fill(arrayHD,  0);
+        Arrays.fill(intHD,  0);
+        Arrays.fill(stringHD, "");
         
         //fills the array with information about the hamming distance
         for(String s: ts)
@@ -56,23 +61,34 @@ public class HammingDist
             switch(temp)
             {
                 case 0:
-                    arrayHD[0]++;
+                    intHD[0]++;
+                    stringHD[0] = stringHD[0] + s + "\n";
                     break;
                 case 1:
-                    arrayHD[1]++;
+                    intHD[1]++;
+                    stringHD[1] = stringHD[1] + s + "\n";
                     break;
                 case 2:
-                    arrayHD[2]++;
+                    intHD[2]++;
+                    stringHD[2] = stringHD[2] + s + "\n";
                     break;
                 case 3:
-                    arrayHD[3]++;
+                    intHD[3]++;
+                    stringHD[3] = stringHD[3] + s + "\n";
                     break;
                 case 4:
-                    arrayHD[4]++;
+                    intHD[4]++;
+                    stringHD[4] = stringHD[4] + s + "\n";
                     break;
             }
         }
-        return arrayHD;
+        
+        //puts each array into the hashmap
+        for(int i = 0; i < 5; i++)
+        {
+            hm.put(intHD[i], stringHD[i]);
+        }
+        return hm;
     }
     /**
      * a method for comparing two strings and returning the hamming value
