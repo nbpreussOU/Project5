@@ -24,9 +24,11 @@ public class Window extends JFrame
         
     }
     
-    public JButton addButton()
+    public JButton addButton(String str)
     {
-        
+        JButton jb = new JButton(str);
+        //need to add action listeners for each button?
+        return jb;
     }
     
     public JTextArea addTextArea()
