@@ -74,6 +74,14 @@ public class Window extends JFrame
         hammingdist = addSlider(1, 4, true, true);
         sliderToStation.add(hammingdist, BorderLayout.NORTH);
         
+        //creates the show station button and adds it to the jpanel
+        showStation = new JButton("Show Station");
+        sliderToStation.add(showStation, BorderLayout.CENTER);
+        
+        //creates a text area to enter a mesonet station
+        showStationText = addTextArea(10, 30, true, "");
+        sliderToStation.add(showStationText, BorderLayout.SOUTH);
+        
         //add sub Jpanels to leftside jpanel
         leftSide.add(hammingDistance);
         leftSide.add(sliderToStation);
