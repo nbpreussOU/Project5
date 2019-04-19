@@ -2,6 +2,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.JTextArea;
 
@@ -18,6 +19,28 @@ public class Window extends JFrame
     //need a button and a writable text area
     
     //need methods to add a button, text area, writable text area, labels
+    private JPanel leftSide;
+    private JPanel rightSide;
+    
+    private JButton showStation;
+    private JButton calculateHD;
+    private JButton addStation;
+    
+    private JLabel enterHammingDistance;
+    private JLabel compareWith;
+    private JLabel distance0;
+    private JLabel distance1;
+    private JLabel distance2;
+    private JLabel distance3;
+    private JLabel distance4;
+    
+    private JTextArea hammingDistText;
+    private JTextArea showStationText;
+    private JTextArea addStationText;
+    
+    private JSlider hammingdist;
+    
+    private JComboBox stationList;
     
     public Window()
     {
@@ -38,18 +61,9 @@ public class Window extends JFrame
         return jta;
     }
     
-    public JLabel addLabel()
+    public JLabel addLabel(String str)
     {
-        
-    }
-    
-    public JSlider addSlider()
-    {
-        
-    }
-    
-    public JComboBox addDropdownBox()
-    {
-        
+        JLabel jl = new JLabel(str);
+        return jl;
     }
 }
