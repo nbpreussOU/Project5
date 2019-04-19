@@ -1,5 +1,6 @@
 import java.awt.BorderLayout;
 
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -23,6 +24,7 @@ public class Window extends JFrame
     //need methods to add a button, text area, writable text area, labels
     private JPanel leftSide;
     private JPanel rightSide;
+    private JPanel hammingDistance;
     private JFrame jf;
     
     private JButton showStation;
@@ -48,19 +50,40 @@ public class Window extends JFrame
     public Window()
     {
         //initialize JFrame and JPanels, add layout managers
-        jf = new JFrame();
+        jf = new JFrame("Hamming Distance");
+        jf.setSize(400,800);
+        jf.setDefaultCloseOperation(EXIT_ON_CLOSE);
         jf.setLayout(new BorderLayout());
+        
         leftSide = new JPanel();
-        leftSide.setLayout(new BorderLayout());
+        leftSide.setLayout(new BoxLayout(leftSide, BoxLayout.PAGE_AXIS));
         rightSide = new JPanel();
         rightSide.setLayout(new BorderLayout());
+        hammingDistance = new JPanel();
+        
+        //adds the top JLabel and textare to the left Jpanel     
+        enterHammingDistance = new JLabel("Enter Hamming Distance:");
+        //TODO: Get this to update based on the slider
+        hammingDistText = addTextArea(1, 20, false, "2");
+        hammingDistance.add(enterHammingDistance);
+        hammingDistance.add(hammingDistText);
+        leftSide.add(hammingDistance);
+        
         
         //adds jpanels to the jframe
         jf.add(leftSide, BorderLayout.WEST);
         jf.add(rightSide, BorderLayout.EAST);
         
-        //sizes the JFrame
-        jf.setSize(400,800);
+        //sets the JFrame to be visible
+        jf.setVisible(true);
+
+        
+        
+    }
+    
+    public static void main(String[] args)
+    {
+        Window window = new Window();
     }
     
     public JButton addButton(String str)
@@ -70,9 +93,9 @@ public class Window extends JFrame
         return jb;
     }
     
-    public JTextArea addTextArea(int row, int column, boolean editable)
+    public JTextArea addTextArea(int row, int column, boolean editable, String str)
     {
-        JTextArea jta = new JTextArea(row, column);
+        JTextArea jta = new JTextArea(str, row, column);
         jta.setEditable(editable);
         return jta;
     }
