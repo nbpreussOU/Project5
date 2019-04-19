@@ -31,9 +31,11 @@ public class Window extends JFrame
         return jb;
     }
     
-    public JTextArea addTextArea()
+    public JTextArea addTextArea(int row, int column, boolean editable)
     {
-        
+        JTextArea jta = new JTextArea(row, column);
+        jta.setEditable(editable);
+        return jta;
     }
     
     public JLabel addLabel()
