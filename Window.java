@@ -8,6 +8,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.text.JTextComponent;
 
 public class Window extends JFrame
 {
@@ -47,15 +49,14 @@ public class Window extends JFrame
     private JLabel distance3;
     private JLabel distance4;
     
-    private JTextArea hammingDistText;
+    private JTextField hammingDistText;
     private JTextArea showStationText;
-    private JTextArea distance0Text;
-    private JTextArea distance1Text;
-    private JTextArea distance2Text;
-    private JTextArea distance3Text;
-    private JTextArea distance4Text;
-    private JTextArea distanceButtonText;
-    private JTextArea addStationText;
+    private JTextField distance0Text;
+    private JTextField distance1Text;
+    private JTextField distance2Text;
+    private JTextField distance3Text;
+    private JTextField distance4Text;
+    private JTextField addStationText;
     
     private JSlider hammingdist;
     
@@ -71,7 +72,7 @@ public class Window extends JFrame
         jf.setLayout(new BorderLayout());
         
         leftSide = new JPanel();
-        leftSide.setLayout(new BoxLayout(leftSide.getRootPane(), BoxLayout.PAGE_AXIS));
+        leftSide.setLayout(new BoxLayout(leftSide, BoxLayout.PAGE_AXIS));
         rightSide = new JPanel(new BorderLayout());
         hammingDistance = new JPanel();
         sliderToStation = new JPanel(new BorderLayout());
@@ -86,7 +87,7 @@ public class Window extends JFrame
         //adds the top JLabel and textare to the left Jpanel     
         enterHammingDistance = new JLabel("Enter Hamming Distance:");
         //TODO: Get this to update based on the slider
-        hammingDistText = addTextArea(1, 20, false, "2");
+        hammingDistText = (JTextField) addTextArea(1, 20, false, true, "2");
         hammingDistance.add(enterHammingDistance);
         hammingDistance.add(hammingDistText);
         
@@ -99,7 +100,7 @@ public class Window extends JFrame
         sliderToStation.add(showStation, BorderLayout.CENTER);
         
         //creates a text area to enter a mesonet station
-        showStationText = addTextArea(10, 30, true, "");
+        showStationText = (JTextArea) addTextArea(10, 30, true, false, "");
         sliderToStation.add(showStationText, BorderLayout.SOUTH);
         
         //creates the JLabel and dropdown menu
@@ -112,15 +113,33 @@ public class Window extends JFrame
         compareWithHD.add(stationList, BorderLayout.EAST);
         compareWithHD.add(calculateHD, BorderLayout.SOUTH);
         
-        //add jlabels and button to the leftside distances jpanel
+        //create jlabels, button, and text area
         distance0 = new JLabel("Distance 0");
         distance1 = new JLabel("Distance 1");
         distance2 = new JLabel("Distance 2");
         distance3 = new JLabel("Distance 3");
         distance4 = new JLabel("Distance 4");
         addStation = new JButton("Add Station");
+        distance0Text = (JTextField)addTextArea(1, 10, false, true, "1");
+        distance1Text = (JTextField)addTextArea(1, 10, false, true, "2");
+        distance2Text = (JTextField)addTextArea(1, 10, false, true, "3");
+        distance3Text = (JTextField)addTextArea(1, 10, false, true, "4");
+        distance4Text = (JTextField)addTextArea(1, 10, false, true, "5");
+        addStationText = (JTextField)addTextArea(1, 10, true, true, "");
         
-        
+        //add labels, button, and text areas to the Jpanels
+        distancePanel0.add(distance0, BorderLayout.WEST);
+        distancePanel1.add(distance1, BorderLayout.WEST);
+        distancePanel2.add(distance2, BorderLayout.WEST);
+        distancePanel3.add(distance3, BorderLayout.WEST);
+        distancePanel4.add(distance4, BorderLayout.WEST);
+        distanceButtonPanel.add(addStation, BorderLayout.WEST);
+        distancePanel0.add(distance0Text, BorderLayout.EAST);
+        distancePanel1.add(distance1Text, BorderLayout.EAST);
+        distancePanel2.add(distance2Text, BorderLayout.EAST);
+        distancePanel3.add(distance3Text, BorderLayout.EAST);
+        distancePanel4.add(distance4Text, BorderLayout.EAST);
+        distanceButtonPanel.add(addStationText, BorderLayout.EAST);
         
         //add sub Jpanels to leftside jpanel
         leftSide.add(hammingDistance);
@@ -152,12 +171,23 @@ public class Window extends JFrame
         //need to add action listeners for each button?
         return jb;
     }
-    
-    public JTextArea addTextArea(int row, int column, boolean editable, String str)
+    /*
+     * @param field true if text field, false if text area
+     */
+    public Object addTextArea(int row, int column, boolean editable, boolean field, String str)
     {
-        JTextArea jta = new JTextArea(str, row, column);
-        jta.setEditable(editable);
-        return jta;
+        //TODO: Properly size all text fields
+        if(field)
+        {
+            JTextField jta = new JTextField(str);
+            jta.setEditable(editable);
+            return jta;
+        }else
+        {
+            JTextArea jta = new JTextArea(str, row, column);
+            jta.setEditable(editable);
+            return jta;
+        }
     }
     
     public JLabel addLabel(String str)
