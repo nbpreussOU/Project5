@@ -27,6 +27,12 @@ public class Window extends JFrame
     private JPanel hammingDistance;
     private JPanel sliderToStation;
     private JPanel compareWithHD;
+    private JPanel distancePanel0;
+    private JPanel distancePanel1;
+    private JPanel distancePanel2;
+    private JPanel distancePanel3;
+    private JPanel distancePanel4;
+    private JPanel distanceButtonPanel;
     private JFrame jf;
     
     private JButton showStation;
@@ -43,6 +49,12 @@ public class Window extends JFrame
     
     private JTextArea hammingDistText;
     private JTextArea showStationText;
+    private JTextArea distance0Text;
+    private JTextArea distance1Text;
+    private JTextArea distance2Text;
+    private JTextArea distance3Text;
+    private JTextArea distance4Text;
+    private JTextArea distanceButtonText;
     private JTextArea addStationText;
     
     private JSlider hammingdist;
@@ -59,12 +71,17 @@ public class Window extends JFrame
         jf.setLayout(new BorderLayout());
         
         leftSide = new JPanel();
-        leftSide.setLayout(new BoxLayout(leftSide, BoxLayout.PAGE_AXIS));
-        rightSide = new JPanel();
-        rightSide.setLayout(new BorderLayout());
+        leftSide.setLayout(new BoxLayout(leftSide.getRootPane(), BoxLayout.PAGE_AXIS));
+        rightSide = new JPanel(new BorderLayout());
         hammingDistance = new JPanel();
         sliderToStation = new JPanel(new BorderLayout());
         compareWithHD = new JPanel(new BorderLayout());
+        distancePanel0 = new JPanel(new BorderLayout());
+        distancePanel1 = new JPanel(new BorderLayout());
+        distancePanel2 = new JPanel(new BorderLayout());
+        distancePanel3 = new JPanel(new BorderLayout());
+        distancePanel4 = new JPanel(new BorderLayout());
+        distanceButtonPanel = new JPanel(new BorderLayout());
         
         //adds the top JLabel and textare to the left Jpanel     
         enterHammingDistance = new JLabel("Enter Hamming Distance:");
@@ -95,22 +112,33 @@ public class Window extends JFrame
         compareWithHD.add(stationList, BorderLayout.EAST);
         compareWithHD.add(calculateHD, BorderLayout.SOUTH);
         
+        //add jlabels and button to the leftside distances jpanel
+        distance0 = new JLabel("Distance 0");
+        distance1 = new JLabel("Distance 1");
+        distance2 = new JLabel("Distance 2");
+        distance3 = new JLabel("Distance 3");
+        distance4 = new JLabel("Distance 4");
+        addStation = new JButton("Add Station");
+        
+        
+        
         //add sub Jpanels to leftside jpanel
         leftSide.add(hammingDistance);
         leftSide.add(sliderToStation);
         leftSide.add(compareWithHD);
+        leftSide.add(distancePanel0);
+        leftSide.add(distancePanel1);
+        leftSide.add(distancePanel2);
+        leftSide.add(distancePanel3);
+        leftSide.add(distancePanel4);
+        leftSide.add(distanceButtonPanel);
         
         //adds jpanels to the jframe
         jf.add(leftSide, BorderLayout.WEST);
         jf.add(rightSide, BorderLayout.EAST);
         
-        pack();
-        
         //sets the JFrame to be visible
-        jf.setVisible(true);
-
-        
-        
+        jf.setVisible(true);   
     }
     
     public static void main(String[] args)
