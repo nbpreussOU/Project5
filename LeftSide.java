@@ -53,6 +53,9 @@ public class LeftSide
     private static JScrollPane stationTextPane;
     protected static JComboBox<String> stationList;
     
+    /*
+     * constructor for the left JPanel in the image.  this conforms to the specifications in the assignment
+     */
     public static JPanel addLeftSide()
     {
         leftSide = new JPanel();
@@ -131,6 +134,7 @@ public class LeftSide
             }       
         });
         
+        //adds these components to a subJPanel
         compareWithHD.add(compareWith, BorderLayout.WEST);
         compareWithHD.add(stationList, BorderLayout.EAST);
         compareWithHD.add(calculateHD, BorderLayout.SOUTH);
@@ -156,14 +160,11 @@ public class LeftSide
                     AllStations.addStation(newStation.toUpperCase());
                     System.out.println(newStation);
                     
-                    //TODO: it should updates the dropdown box but it breaks the Calculate HD button and doesn't update the box
-                    //use a method to populate jCombobox
                     CreateComponents.populateJComboBox(stationList, AllStations.getListOfStations());
                 }  
             }  
         });
         
-        //TODO: creates the text fields, and set proper sizes
         distance0Text = (JTextField)CreateComponents.addTextArea(150, 25, false, true, "");
         distance1Text = (JTextField)CreateComponents.addTextArea(150, 25, false, true, "");
         distance2Text = (JTextField)CreateComponents.addTextArea(150, 25, false, true, "");
@@ -199,6 +200,10 @@ public class LeftSide
         return leftSide;
     }
     
+    /**
+     * it was necessary to break this method away from the main body due to its length
+     * this method sets the text for each of the JTextFields based on the number of stations at a given hamming distance
+     */
     public static void calculateHD()
     {
         //initializes necessary variables
