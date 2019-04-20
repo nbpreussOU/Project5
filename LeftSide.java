@@ -163,13 +163,13 @@ public class LeftSide
             }  
         });
         
-        //creates the text fields
-        distance0Text = (JTextField)CreateComponents.addTextArea(1, 10, false, true, "\t      ");
-        distance1Text = (JTextField)CreateComponents.addTextArea(1, 10, false, true, "\t      ");
-        distance2Text = (JTextField)CreateComponents.addTextArea(1, 10, false, true, "\t      ");
-        distance3Text = (JTextField)CreateComponents.addTextArea(1, 10, false, true, "\t      ");
-        distance4Text = (JTextField)CreateComponents.addTextArea(1, 10, false, true, "\t      ");
-        addStationText = (JTextField)CreateComponents.addTextArea(1, 10, true, true, "\t      ");
+        //TODO: creates the text fields, and set proper sizes
+        distance0Text = (JTextField)CreateComponents.addTextArea(150, 25, false, true, "");
+        distance1Text = (JTextField)CreateComponents.addTextArea(150, 25, false, true, "");
+        distance2Text = (JTextField)CreateComponents.addTextArea(150, 25, false, true, "");
+        distance3Text = (JTextField)CreateComponents.addTextArea(150, 25, false, true, "");
+        distance4Text = (JTextField)CreateComponents.addTextArea(150, 25, false, true, "");
+        addStationText = (JTextField)CreateComponents.addTextArea(150, 25, true, true, "");
         
         //add labels, button, and text areas to the Jpanels
         distancePanel0.add(distance0, BorderLayout.WEST);

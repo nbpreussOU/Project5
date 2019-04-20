@@ -1,3 +1,4 @@
+import java.awt.Dimension;
 import java.util.TreeSet;
 
 import javax.swing.JButton;
@@ -21,9 +22,10 @@ public class CreateComponents
     {
         if(field)
         {
-            JTextField jta = new JTextField(str);
-            jta.setEditable(editable);
-            return jta;
+            JTextField jtf = new JTextField(str);
+            jtf.setPreferredSize(new Dimension(row, column));
+            jtf.setEditable(editable);
+            return jtf;
         }else
         {
             JTextArea jta = new JTextArea(str, row, column);

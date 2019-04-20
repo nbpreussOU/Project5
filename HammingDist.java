@@ -208,8 +208,7 @@ public class HammingDist
            total += Math.abs(fixedStation[i] - rotatingStation[i]);
        }
        
-       return total;
-        
+       return total;   
     }
 
     public HashMap<Integer, String> getHammingDistance(String stID)
