@@ -146,12 +146,12 @@ public class LeftSide
         distance3 = new JLabel("Distance 3");
         distance4 = new JLabel("Distance 4");
         addStation = new JButton("Add Station");
-        distance0Text = (JTextField)CreateComponents.addTextArea(1, 10, false, true, "1");
-        distance1Text = (JTextField)CreateComponents.addTextArea(1, 10, false, true, "2");
-        distance2Text = (JTextField)CreateComponents.addTextArea(1, 10, false, true, "3");
-        distance3Text = (JTextField)CreateComponents.addTextArea(1, 10, false, true, "4");
-        distance4Text = (JTextField)CreateComponents.addTextArea(1, 10, false, true, "5");
-        addStationText = (JTextField)CreateComponents.addTextArea(1, 10, true, true, "");
+        distance0Text = (JTextField)CreateComponents.addTextArea(1, 10, false, true, "\t      ");
+        distance1Text = (JTextField)CreateComponents.addTextArea(1, 10, false, true, "\t      ");
+        distance2Text = (JTextField)CreateComponents.addTextArea(1, 10, false, true, "\t      ");
+        distance3Text = (JTextField)CreateComponents.addTextArea(1, 10, false, true, "\t      ");
+        distance4Text = (JTextField)CreateComponents.addTextArea(1, 10, false, true, "\t      ");
+        addStationText = (JTextField)CreateComponents.addTextArea(1, 10, true, true, "\t      ");
         
         //add labels, button, and text areas to the Jpanels
         distancePanel0.add(distance0, BorderLayout.WEST);
@@ -196,12 +196,17 @@ public class LeftSide
         {
             //gets the list of station names at a certain hamming distance
             String listStations = hm.get(i);
-            
-            //splits the station list on a newline character, telling how many different stations there are
-            numberStationsString = listStations.split("\n");
-            
+
             //taking the number of stations and putting it into an array
-            arrayDistances[i] = numberStationsString.length;
+            if(hm.get(i).equals(""))
+            {
+                arrayDistances[i] = 0;
+            }else
+            {
+              //splits the station list on a newline character, telling how many different stations there are
+                numberStationsString = listStations.split("\n");
+                arrayDistances[i] = numberStationsString.length;
+            } 
         }
         
         //assigns each JTextField the proper text
