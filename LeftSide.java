@@ -8,6 +8,8 @@ import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 public class LeftSide
 {
@@ -46,10 +48,10 @@ public class LeftSide
     private static JSlider hammingdist;
 
     private static JComboBox<String> stationList;
+    private static HammingDist onlyForListStations;
     
     public static JPanel addLeftSide()
     {
-        //TODO: resize all buttons
         leftSide = new JPanel();
         leftSide.setLayout(new BoxLayout(leftSide, BoxLayout.PAGE_AXIS));
         hammingDistance = new JPanel();
@@ -61,16 +63,25 @@ public class LeftSide
         distancePanel3 = new JPanel(new BorderLayout());
         distancePanel4 = new JPanel(new BorderLayout());
         distanceButtonPanel = new JPanel(new BorderLayout());
+        onlyForListStations = new HammingDist("");
         
         //adds the top JLabel and textare to the left Jpanel     
         enterHammingDistance = new JLabel("Enter Hamming Distance:");
-        //TODO: Get this to update based on the slider
         hammingDistText = (JTextField) CreateComponents.addTextArea(1, 20, false, true, "2");
         hammingDistance.add(enterHammingDistance);
         hammingDistance.add(hammingDistText);
         
         //adds the slider to the left side frame
         hammingdist = CreateComponents.addSlider(1, 4, true, true);
+        //updates the value of the hammingdistance jtextfield once the slider is moved
+        hammingdist.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent event)
+            {
+                //updates the above textfield if there is a change in value
+                hammingDistText.setText(Integer.toString(hammingdist.getValue()));
+            }
+        });
         sliderToStation.add(hammingdist, BorderLayout.NORTH);
         
         //creates the show station button and adds it to the jpanel
@@ -83,8 +94,6 @@ public class LeftSide
         
         //creates the JLabel and dropdown menu
         compareWith = new JLabel("Compare With:");
-        //FIXME
-        String[] as = new String[] {"as", "df"};
         stationList = new JComboBox<String>(as);
         calculateHD = new JButton("Calculate HD");
         compareWithHD.add(compareWith, BorderLayout.WEST);

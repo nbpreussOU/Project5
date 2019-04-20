@@ -9,7 +9,6 @@ import javax.swing.JTextField;
 public class RightSide
 {
     private static JPanel rightSide;
-    private static JPanel row0;
     private static JPanel row1;
     private static JPanel row2;
     private static JPanel row3;
@@ -33,7 +32,6 @@ public class RightSide
         //initialize JPanels
         rightSide = new JPanel();
         rightSide.setLayout(new BoxLayout(rightSide, BoxLayout.PAGE_AXIS));
-        row0 = new JPanel(new BorderLayout());
         row1 = new JPanel(new BorderLayout());
         row2 = new JPanel(new BorderLayout());
         row3 = new JPanel(new BorderLayout());
@@ -55,7 +53,7 @@ public class RightSide
         updateStat = new JButton("Update Statistics");
         
         //add everything to the proper JPanel
-        row0.add(explanationOfStatistics, BorderLayout.WEST);
+        row1.add(explanationOfStatistics, BorderLayout.NORTH);
         row1.add(mostCommonLetter, BorderLayout.WEST);
         row2.add(leastCommonLetter, BorderLayout.WEST);
         row3.add(closestStation, BorderLayout.WEST);
@@ -65,9 +63,9 @@ public class RightSide
         row2.add(leastCommonLetterText, BorderLayout.EAST);
         row3.add(closestStationText, BorderLayout.EAST);
         row4.add(furthestStationText, BorderLayout.EAST);
+        row4.add(updateStat, BorderLayout.SOUTH);
         
         //add JPanels to the right side panel
-        rightSide.add(row0);
         rightSide.add(row1);
         rightSide.add(row2);
         rightSide.add(row3);
