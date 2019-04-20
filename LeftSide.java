@@ -1,6 +1,7 @@
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.HashMap;
 
 import javax.swing.BoxLayout;
@@ -67,7 +68,7 @@ public class LeftSide
         distancePanel4 = new JPanel(new BorderLayout());
         distanceButtonPanel = new JPanel(new BorderLayout());
         onlyForListStations = new HammingDist("");
-        
+
         //adds the top JLabel and textare to the left Jpanel     
         enterHammingDistance = new JLabel("Enter Hamming Distance:");
         hammingDistText = (JTextField) CreateComponents.addTextArea(1, 20, false, true, "4");
@@ -102,7 +103,7 @@ public class LeftSide
                 
                 //creates a hammingdist object
                 HammingDist hd = new HammingDist(station);
-                
+
                 //uses the hamming distance object and the value of the sliders to return the string list of all the stations at a certain hamming distance
                 HashMap<Integer,String> hm = hd.getHammingDist();
                 String listStations = hm.get(sliderValue);

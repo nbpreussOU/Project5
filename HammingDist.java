@@ -10,14 +10,15 @@ public class HammingDist
     private TreeSet<String> listStations;
     private HashMap<Integer, String> hammingDist;
     public HammingDist(String str)
-    {
+    {      
         try
         {
             listStations = allStations("Mesonet.txt");
         } catch (IOException e)
         {
-            e.printStackTrace();
+             e.printStackTrace();
         }
+        
         if(str.length() == 4)
         {
             hammingDist = getHammingDistance(str);
@@ -228,7 +229,7 @@ public class HammingDist
         int temp;
         int[] intHD = new int[5];
         String[] stringHD = new String[5];
-        TreeSet<String> ts = getListStations();
+        TreeSet<String> ts = this.getListStations();
         HashMap<Integer, String> hm  = new HashMap<>();
         
         //populates arrays with 0 to start
@@ -312,7 +313,6 @@ public class HammingDist
             }
                 //reads in the next line, if available
                 strg = br.readLine();
-            
         }
         
         br.close();
