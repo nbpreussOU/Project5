@@ -2,10 +2,14 @@ import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BoundedRangeModel;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 public class RightSide
@@ -29,6 +33,8 @@ public class RightSide
     private static JTextField closestStationText;
     private static JTextField furthestStationText;
     
+    private static JScrollBar uncommonLetter;
+    
     public static JPanel addRightSide()
     {
         //initialize JPanels
@@ -47,10 +53,18 @@ public class RightSide
         furthestStation = new JLabel("Furthest Station:");
         
         //initialize J Text fields
-        mostCommonLetterText = (JTextField) CreateComponents.addTextArea(1, 10, false, true, "");
-        leastCommonLetterText = (JTextField) CreateComponents.addTextArea(1, 10, false, true, "");
-        closestStationText = (JTextField) CreateComponents.addTextArea(1, 10, false, true, "");
-        furthestStationText = (JTextField) CreateComponents.addTextArea(1, 10, false, true, "");
+        mostCommonLetterText = (JTextField) CreateComponents.addTextArea(150, 25, false, true, "");
+        leastCommonLetterText = (JTextField) CreateComponents.addTextArea(150, 25, false, true, "");
+        closestStationText = (JTextField) CreateComponents.addTextArea(150, 25, false, true, "");
+        furthestStationText = (JTextField) CreateComponents.addTextArea(150, 25, false, true, "");
+        
+        //leastCommonLetterText needs a scrollbar
+        uncommonLetter = new JScrollBar(JScrollBar.HORIZONTAL);
+        BoundedRangeModel brm = leastCommonLetterText.getHorizontalVisibility();
+        uncommonLetter.setModel(brm);
+        JPanel text = new JPanel(new BorderLayout());
+        text.add(leastCommonLetterText, BorderLayout.CENTER);
+        text.add(uncommonLetter, BorderLayout.SOUTH);
         
         //initialize and add afction listener to the button
         updateStat = new JButton("Update Statistics");
@@ -70,7 +84,7 @@ public class RightSide
         row4.add(furthestStation, BorderLayout.WEST);
         
         row1.add(mostCommonLetterText, BorderLayout.EAST);
-        row2.add(leastCommonLetterText, BorderLayout.EAST);
+        row2.add(text, BorderLayout.EAST);
         row3.add(closestStationText, BorderLayout.EAST);
         row4.add(furthestStationText, BorderLayout.EAST);
         row4.add(updateStat, BorderLayout.SOUTH);
