@@ -113,6 +113,6 @@ public class RightSide
         mostCommonLetterText.setText(hd.commonUncommonLetter(sliderValue)[0]);
         leastCommonLetterText.setText(hd.commonUncommonLetter(sliderValue)[1]);
         closestStationText.setText(hd.getClosestStation(stID, sliderValue));
-        closestStationText.setText(hd.getFurthestStation(stID, sliderValue));
+        furthestStationText.setText(hd.getFurthestStation(stID, sliderValue));
     }
 }

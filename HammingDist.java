@@ -204,9 +204,17 @@ public class HammingDist
        char[] fixedStation = stID.toCharArray();
        int total = 0;
        
+       //calculates the distance between two characters on the ascii table
        for(int i = 0; i < 4; i++)
        {
-           total += Math.abs(fixedStation[i] - rotatingStation[i]);
+           //flat value if there is the number in the station name
+           if(fixedStation[i] == 2 || rotatingStation[i] == 2)
+           {
+               total += 15;
+           }else
+           {
+               total += Math.abs(fixedStation[i] - rotatingStation[i]);
+           }
        }
        
        return total;   
