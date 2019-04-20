@@ -49,9 +49,9 @@ public class LeftSide
     private static JTextField distance4Text;
     private static JTextField addStationText;
 
-    private static JSlider hammingdist;
+    protected static JSlider hammingdist;
     private static JScrollPane stationTextPane;
-    private static JComboBox<String> stationList;
+    protected static JComboBox<String> stationList;
     
     public static JPanel addLeftSide()
     {

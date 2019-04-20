@@ -1,4 +1,6 @@
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -50,7 +52,15 @@ public class RightSide
         closestStationText = (JTextField) CreateComponents.addTextArea(1, 10, false, true, "");
         furthestStationText = (JTextField) CreateComponents.addTextArea(1, 10, false, true, "");
         
+        //initialize and add afction listener to the button
         updateStat = new JButton("Update Statistics");
+        updateStat.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent event)
+            {
+                updateStats();
+            }
+        });
         
         //add everything to the proper JPanel
         row1.add(explanationOfStatistics, BorderLayout.NORTH);
@@ -72,5 +82,18 @@ public class RightSide
         rightSide.add(row4);
         
         return rightSide;
+    }
+
+    public static void updateStats()
+    {
+        //set variables for commonly used values
+        String stID = (String)LeftSide.stationList.getSelectedItem();
+        int sliderValue = LeftSide.hammingdist.getValue();
+        
+        //update the title based on what the parameters are
+        String title = String.format("Statistics for station %s with all stations at Hamming Distance %f", stID, sliderValue);
+        explanationOfStatistics.setText(title);
+        
+        //update the text of each of the textfields based on methods
     }
 }
