@@ -89,6 +89,7 @@ public class LeftSide
         sliderToStation.add(hammingdist, BorderLayout.NORTH);
         
        //creates a text area to enter a mesonet station
+        //TODO: add a scrollbar if it goes on too long
         showStationText = (JTextArea) CreateComponents.addTextArea(10, 30, true, false, "");
         
         //creates the show station button, adds action listener, and adds it to the jpanel

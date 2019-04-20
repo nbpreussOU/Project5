@@ -228,13 +228,11 @@ public class HammingDist
     {
         //TODO: get all of the hamming distances output correctly
         int temp;
-        int[] intHD = new int[5];
         String[] stringHD = new String[5];
         TreeSet<String> ts = this.getListStations();
         HashMap<Integer, String> hm  = new HashMap<>();
         
         //populates arrays with 0 to start
-        Arrays.fill(intHD,  0);
         Arrays.fill(stringHD, "");
         
         //fills the array with information about the hamming distance
@@ -247,23 +245,18 @@ public class HammingDist
             switch(temp)
             {
                 case 0:
-                    intHD[0]++;
                     stringHD[0] = stringHD[0] + s + "\n";
                     break;
                 case 1:
-                    intHD[1]++;
                     stringHD[1] = stringHD[1] + s + "\n";
                     break;
                 case 2:
-                    intHD[2]++;
                     stringHD[2] = stringHD[2] + s + "\n";
                     break;
                 case 3:
-                    intHD[3]++;
                     stringHD[3] = stringHD[3] + s + "\n";
                     break;
                 case 4:
-                    intHD[4]++;
                     stringHD[4] = stringHD[4] + s + "\n";
                     break;
             }
@@ -272,7 +265,7 @@ public class HammingDist
         //puts each array into the hashmap
         for(int i = 0; i < 5; i++)
         {
-            hm.put(intHD[i], stringHD[i]);
+            hm.put(i, stringHD[i]);
         }
         return hm;
     }
