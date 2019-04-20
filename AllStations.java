@@ -5,7 +5,11 @@ import java.util.TreeSet;
 
 public class AllStations
 {
-    protected static TreeSet<String> listOfStations;
+    protected static TreeSet<String> listOfStations; //prevent duplicates
+    
+    /**
+     * constructor for a treeset of all the station IDs, in a try catch block because IOExceptions are the devil
+     */
     public AllStations()
     {
         try
@@ -18,6 +22,12 @@ public class AllStations
         }
     }
 
+    /**
+     * method to read in all of the station IDs from a filename
+     * @param filename the filename of the .txt file
+     * @return a TreeSet with all the strings included
+     * @throws IOException file exception
+     */
     public TreeSet<String> allStations(String filename) throws IOException
     {
         BufferedReader br = new BufferedReader(new FileReader("Mesonet.txt"));
@@ -44,11 +54,19 @@ public class AllStations
         return stations;
     }
     
+    /**
+     * adds a station to the list of station
+     * @param str stID to be added
+     */
     public static void addStation(String str)
     {
         listOfStations.add(str);
     }
 
+    /**
+     * method to return the current list of stations
+     * @return Treeset<String> list of stations
+     */
     public static TreeSet<String> getListOfStations()
     {
         return listOfStations;
