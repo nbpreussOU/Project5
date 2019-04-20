@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JSlider;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -50,7 +51,7 @@ public class LeftSide
     private static JTextField addStationText;
 
     private static JSlider hammingdist;
-
+    private static JScrollPane stationTextPane;
     private static JComboBox<String> stationList;
     private static HammingDist onlyForListStations;
     
@@ -88,9 +89,9 @@ public class LeftSide
         });
         sliderToStation.add(hammingdist, BorderLayout.NORTH);
         
-       //creates a text area to enter a mesonet station
-        //TODO: add a scrollbar if it goes on too long
+       //creates a text area in a scroll pane to enter a mesonet station
         showStationText = (JTextArea) CreateComponents.addTextArea(10, 30, true, false, "");
+        stationTextPane = new JScrollPane(showStationText); 
         
         //creates the show station button, adds action listener, and adds it to the jpanel
         showStation = new JButton("Show Station");
@@ -114,7 +115,7 @@ public class LeftSide
         
         //adds the show station components to the jpanel
         sliderToStation.add(showStation, BorderLayout.CENTER);
-        sliderToStation.add(showStationText, BorderLayout.SOUTH);
+        sliderToStation.add(stationTextPane, BorderLayout.SOUTH);
         
         //converts treeset to array, and uses it to create a dropdown menu
         String[] result = onlyForListStations.getListStations().toArray(new String[onlyForListStations.getListStations().size()]);
