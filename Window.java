@@ -10,6 +10,9 @@ public class Window extends JFrame
     private JPanel rightSide;
     private JFrame jf;
 
+    /*
+     * constructor for the window to be displayed
+     */
     public Window()
     {
         //initialize JFrame and JPanels, add layout managers
@@ -30,8 +33,12 @@ public class Window extends JFrame
         jf.setVisible(true);   
     }
     
+    /**
+     * main method of the project, displays a window
+     */
     public static void main(String[] args)
     {
+        //makes a list of all the stations and displays them
         AllStations allStations = new AllStations();
         Window window = new Window();
     } 
