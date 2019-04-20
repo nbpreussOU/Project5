@@ -1,23 +1,14 @@
 import java.awt.BorderLayout;
-import java.util.TreeSet;
 
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JSlider;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
-import javax.swing.text.JTextComponent;
+
 
 public class Window extends JFrame
 {
     private JPanel leftSide;
     private JPanel rightSide;
     private JFrame jf;
-    protected static AllStations allStations;
 
     public Window()
     {
@@ -41,7 +32,7 @@ public class Window extends JFrame
     
     public static void main(String[] args)
     {
-        allStations = new AllStations();
+        AllStations allStations = new AllStations();
         Window window = new Window();
     } 
     

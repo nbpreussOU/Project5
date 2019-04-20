@@ -1,6 +1,3 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.TreeSet;
@@ -220,7 +217,7 @@ public class HammingDist
         //TODO: get all of the hamming distances output correctly
         int temp;
         String[] stringHD = new String[5];
-        TreeSet<String> ts = Window.allStations.getListOfStations();
+        TreeSet<String> ts = AllStations.getListOfStations();
         HashMap<Integer, String> hm  = new HashMap<>();
         
         //populates arrays with 0 to start

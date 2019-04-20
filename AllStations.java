@@ -5,7 +5,7 @@ import java.util.TreeSet;
 
 public class AllStations
 {
-    private TreeSet<String> listOfStations;
+    protected static TreeSet<String> listOfStations;
     public AllStations()
     {
         try
@@ -44,13 +44,13 @@ public class AllStations
         return stations;
     }
     
-    public void addStation(String str)
+    public static void addStation(String str)
     {
         listOfStations.add(str);
     }
 
-    public TreeSet<String> getListOfStations()
+    public static TreeSet<String> getListOfStations()
     {
         return listOfStations;
-    }
+    }    
 }

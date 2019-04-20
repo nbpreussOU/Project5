@@ -115,7 +115,7 @@ public class LeftSide
         sliderToStation.add(stationTextPane, BorderLayout.SOUTH);
         
         //converts treeset to array, and uses it to create a dropdown menu
-        String[] result = Window.allStations.getListOfStations().toArray(new String[Window.allStations.getListOfStations().size()]);
+        String[] result = AllStations.getListOfStations().toArray(new String[AllStations.getListOfStations().size()]);
         stationList = new JComboBox<String>(result);
 
         //creates the JLabel and dropdown menu
@@ -149,14 +149,15 @@ public class LeftSide
             {
                 //gets the text from the station and removes all the whitespace
                 String newStation = addStationText.getText().trim();
-                
+
                 //adds the station to the list of stations, and ensures that it is the proper length and uppercase
                 if(newStation.length() == 4)
                 {
-                    Window.allStations.addStation(newStation.toUpperCase());
+                    AllStations.addStation(newStation.toUpperCase());
+                    System.out.println(newStation);
                     
                     //updates the dropdown box
-                    String[] result = Window.allStations.getListOfStations().toArray(new String[Window.allStations.getListOfStations().size()]);
+                    String[] result = AllStations.getListOfStations().toArray(new String[AllStations.getListOfStations().size()]);
                     stationList = new JComboBox<String>(result);
                 }  
             }  
