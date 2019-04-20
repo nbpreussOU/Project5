@@ -8,7 +8,8 @@ import java.util.TreeSet;
 public class HammingDist
 {
     private TreeSet<String> listStations;
-    public HammingDist()
+    private HashMap<Integer, String> hammingDist;
+    public HammingDist(String str)
     {
         try
         {
@@ -17,6 +18,9 @@ public class HammingDist
         {
             e.printStackTrace();
         }
+        
+        hammingDist = getHammingDistance(str);
+        
     }
     
     public int getMostCommonLetter()
@@ -29,16 +33,73 @@ public class HammingDist
         
     }
     
-    public String getClosestStation()
+    public String getClosestStation(String stID, int hD)
     {
+        HashMap<Integer, String> hm = getHammingDist();
+        int min = Integer.MAX_VALUE;
+        int temp;
+        String strMin = "";
         
+        //break the string up into each individual station
+        String stationsUnbroken = hm.get(hD);
+        String[] stationsBroken = stationsUnbroken.split("\n");
+        
+        for(String s: stationsBroken)
+        {
+            //calculate the total ascii distance between the stations
+            temp = calculateASCIIDistance(s, stID);
+            if(temp < min)
+            {
+                //change the max values if a max occurs
+                min = temp;
+                strMin = s;
+            }
+        }
+        
+        return strMin;
     }
     
-    public String getFurthestStation()
+    public String getFurthestStation(String stID, int hD)
     {
+        HashMap<Integer, String> hm = getHammingDist();
+        int max = Integer.MIN_VALUE;
+        int temp;
+        String strMax = "";
         
+        //break the string up into each individual station
+        String stationsUnbroken = hm.get(hD);
+        String[] stationsBroken = stationsUnbroken.split("\n");
+        
+        for(String s: stationsBroken)
+        {
+            //calculate the total ascii distance between the stations
+            temp = calculateASCIIDistance(s, stID);
+            if(temp > max)
+            {
+                //change the max values if a max occurs
+                max = temp;
+                strMax = s;
+            }
+        }
+        
+        return strMax;
     }
     
+    public int calculateASCIIDistance(String s, String stID)
+    {
+       char[] rotatingStation = s.toCharArray();
+       char[] fixedStation = stID.toCharArray();
+       int total = 0;
+       
+       for(int i = 0; i < 4; i++)
+       {
+           total += Math.abs(fixedStation[i] - rotatingStation[i]);
+       }
+       
+       return total;
+        
+    }
+
     public HashMap<Integer, String> getHammingDistance(String stID)
     {
         int temp;
@@ -90,6 +151,7 @@ public class HammingDist
         }
         return hm;
     }
+    
     /**
      * a method for comparing two strings and returning the hamming value
      * @param station String station name
@@ -107,12 +169,6 @@ public class HammingDist
                 }
         }
         return distance;
-    }
-    
-    
-    public String[] getListOfStationsAtHammingDistance()
-    {
-        
     }
     
     public TreeSet<String> allStations(String filename) throws IOException
@@ -145,6 +201,11 @@ public class HammingDist
     public TreeSet<String> getListStations()
     {
         return listStations;
+    }
+
+    public HashMap<Integer, String> getHammingDist()
+    {
+        return hammingDist;
     }
     
     
