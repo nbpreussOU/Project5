@@ -1,6 +1,7 @@
 import java.awt.BorderLayout;
 
 import javax.swing.BoxLayout;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -19,6 +20,8 @@ public class RightSide
     private static JLabel leastCommonLetter;
     private static JLabel closestStation;
     private static JLabel furthestStation;
+    
+    private static JButton updateStat;
     
     private static JTextField mostCommonLetterText;
     private static JTextField leastCommonLetterText;
@@ -48,6 +51,8 @@ public class RightSide
         leastCommonLetterText = (JTextField) CreateComponents.addTextArea(1, 10, false, true, "");
         closestStationText = (JTextField) CreateComponents.addTextArea(1, 10, false, true, "");
         furthestStationText = (JTextField) CreateComponents.addTextArea(1, 10, false, true, "");
+        
+        updateStat = new JButton("Update Statistics");
         
         //add everything to the proper JPanel
         row0.add(explanationOfStatistics, BorderLayout.WEST);
