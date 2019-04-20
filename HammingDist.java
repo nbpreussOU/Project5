@@ -238,7 +238,6 @@ public class HammingDist
         //fills the array with information about the hamming distance
         for(String s: ts)
         {
-            System.out.println(s);
             //encapsulates the comparison of strings
             temp = compareStrings(s, stID);
             
@@ -303,7 +302,6 @@ public class HammingDist
         
         //as long as there is another string
         strg = br.readLine();
-        System.out.println(strg);
 
         while(strg != null)
         {

@@ -1,4 +1,7 @@
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.HashMap;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -67,7 +70,7 @@ public class LeftSide
         
         //adds the top JLabel and textare to the left Jpanel     
         enterHammingDistance = new JLabel("Enter Hamming Distance:");
-        hammingDistText = (JTextField) CreateComponents.addTextArea(1, 20, false, true, "2");
+        hammingDistText = (JTextField) CreateComponents.addTextArea(1, 20, false, true, "4");
         hammingDistance.add(enterHammingDistance);
         hammingDistance.add(hammingDistText);
         
@@ -84,12 +87,31 @@ public class LeftSide
         });
         sliderToStation.add(hammingdist, BorderLayout.NORTH);
         
-        //creates the show station button and adds it to the jpanel
-        showStation = new JButton("Show Station");
-        sliderToStation.add(showStation, BorderLayout.CENTER);
-        
-        //creates a text area to enter a mesonet station
+       //creates a text area to enter a mesonet station
         showStationText = (JTextArea) CreateComponents.addTextArea(10, 30, true, false, "");
+        
+        //creates the show station button, adds action listener, and adds it to the jpanel
+        showStation = new JButton("Show Station");
+        showStation.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent event)
+            {
+                //gets the correct hamming distance and the correct station to compare
+                int sliderValue = hammingdist.getValue();
+                String station = (String)stationList.getSelectedItem();
+                
+                //creates a hammingdist object
+                HammingDist hd = new HammingDist(station);
+                
+                //uses the hamming distance object and the value of the sliders to return the string list of all the stations at a certain hamming distance
+                HashMap<Integer,String> hm = hd.getHammingDist();
+                String listStations = hm.get(sliderValue);
+                showStationText.setText(listStations);
+            }  
+        });
+        
+        //adds the show station components to the jpanel
+        sliderToStation.add(showStation, BorderLayout.CENTER);
         sliderToStation.add(showStationText, BorderLayout.SOUTH);
         
         //converts treeset to array, and uses it to create a dropdown menu
