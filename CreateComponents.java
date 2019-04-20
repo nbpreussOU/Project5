@@ -1,4 +1,7 @@
+import java.util.TreeSet;
+
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JSlider;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -39,5 +42,14 @@ public class CreateComponents
         js.setPaintTrack(ticks);
         js.setMajorTickSpacing(1);
         return js;
+    }
+    
+    public static void populateJComboBox(JComboBox<String> cb, TreeSet<String> ts)
+    {
+        cb.removeAllItems();
+        for(String s: ts)
+        {
+            cb.addItem(s);
+        }
     }
 }

@@ -115,8 +115,8 @@ public class LeftSide
         sliderToStation.add(stationTextPane, BorderLayout.SOUTH);
         
         //converts treeset to array, and uses it to create a dropdown menu
-        String[] result = AllStations.getListOfStations().toArray(new String[AllStations.getListOfStations().size()]);
-        stationList = new JComboBox<String>(result);
+        stationList = new JComboBox<String>();
+        CreateComponents.populateJComboBox(stationList, AllStations.getListOfStations());
 
         //creates the JLabel and dropdown menu
         compareWith = new JLabel("Compare With:");
@@ -156,9 +156,9 @@ public class LeftSide
                     AllStations.addStation(newStation.toUpperCase());
                     System.out.println(newStation);
                     
-                    //updates the dropdown box
-                    String[] result = AllStations.getListOfStations().toArray(new String[AllStations.getListOfStations().size()]);
-                    stationList = new JComboBox<String>(result);
+                    //TODO: it should updates the dropdown box but it breaks the Calculate HD button and doesn't update the box
+                    //use a method to populate jCombobox
+                    CreateComponents.populateJComboBox(stationList, AllStations.getListOfStations());
                 }  
             }  
         });
@@ -234,4 +234,5 @@ public class LeftSide
         distance3Text.setText(Integer.toString(arrayDistances[3]));
         distance4Text.setText(Integer.toString(arrayDistances[4]));    
     }
+    
 }
