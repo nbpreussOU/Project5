@@ -7,6 +7,7 @@ public class HammingDist
     private HashMap<Integer, String> hammingDist;
     public HammingDist(String str)
     {           
+        //I don't know what's going on here
         if(str.length() == 4)
         {
             hammingDist = getHammingDistance(str);  

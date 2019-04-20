@@ -89,11 +89,16 @@ public class RightSide
         //set variables for commonly used values
         String stID = (String)LeftSide.stationList.getSelectedItem();
         int sliderValue = LeftSide.hammingdist.getValue();
+        HammingDist hd = new HammingDist(stID);
         
         //update the title based on what the parameters are
-        String title = String.format("Statistics for station %s with all stations at Hamming Distance %f", stID, sliderValue);
+        String title = String.format("Statistics for station %s with all stations at Hamming Distance %d", stID, sliderValue);
         explanationOfStatistics.setText(title);
         
         //update the text of each of the textfields based on methods
+        mostCommonLetterText.setText(hd.commonUncommonLetter(sliderValue)[0]);
+        leastCommonLetterText.setText(hd.commonUncommonLetter(sliderValue)[1]);
+        closestStationText.setText(hd.getClosestStation(stID, sliderValue));
+        closestStationText.setText(hd.getFurthestStation(stID, sliderValue));
     }
 }
