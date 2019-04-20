@@ -5,16 +5,25 @@ import java.util.TreeSet;
 public class HammingDist
 {
     private HashMap<Integer, String> hammingDist;
+    
+    /**
+     * calculates the hamming distance to every other station given a station ID
+     * @param str String station ID
+     */
     public HammingDist(String str)
     {           
-        //I don't know what's going on here
+        //checks for the right length of a string, and finds the hamming distance of all other stations
         if(str.length() == 4)
         {
             hammingDist = getHammingDistance(str);  
         }        
     }
     
-    //[0] is commonest letter, [1] is uncommonest
+    /**
+     * this methods finds the most common and uncommon letters of the station names at a given hamming distance
+     * @param hD int for whichever hamming distance is selected on the slider
+     * @return String[2]  |  [0] is commonest letter, [1] is uncommonest 
+     */
     public String[] commonUncommonLetter(int hD)
     {
         HashMap<Integer, String> hm = getHammingDist();
@@ -117,6 +126,7 @@ public class HammingDist
                 max = alphabetFrequency[i];
             }
         }
+        
         int min = max;
         for(int i = 0; i < 26; i++)
         {
@@ -142,10 +152,14 @@ public class HammingDist
         }
         
         return new String[] {maxLetters, minLetters};
-    }
+    }    
     
-
-    
+    /**
+     * this method finds the closest ASCII station to a given station
+     * @param stID station to compare all stations to
+     * @param hD the hamming distance on the slider
+     * @return string station ID
+     */
     public String getClosestStation(String stID, int hD)
     {
         HashMap<Integer, String> hm = getHammingDist();
@@ -172,6 +186,12 @@ public class HammingDist
         return strMin;
     }
     
+    /**
+     * this method finds the furthest ASCII station to a given station
+     * @param stID station to compare all stations to
+     * @param hD the hamming distance on the slider
+     * @return String station ID
+     */
     public String getFurthestStation(String stID, int hD)
     {
         HashMap<Integer, String> hm = getHammingDist();
@@ -198,6 +218,12 @@ public class HammingDist
         return strMax;
     }
     
+    /**
+     * this method calculates the ascii distance between two stations
+     * @param s one station ID
+     * @param stID the other station ID that is being compared
+     * @return int total ascii difference between the two stations
+     */
     public int calculateASCIIDistance(String s, String stID)
     {
        char[] rotatingStation = s.toCharArray();
@@ -220,9 +246,13 @@ public class HammingDist
        return total;   
     }
 
+    /**
+     * this method returns a hashmap of all stations at all possible hamming distances of the given station
+     * @param stID station that all the hamming relationships are being computed for
+     * @return hashmap with integer hamming distances as keys and a string of all stations at a length as values
+     */
     public HashMap<Integer, String> getHammingDistance(String stID)
     {
-        //TODO: get all of the hamming distances output correctly
         int temp;
         String[] stringHD = new String[5];
         TreeSet<String> ts = AllStations.getListOfStations();
@@ -285,6 +315,10 @@ public class HammingDist
         return distance;
     }
     
+    /**
+     * returns the hashmap currently being used
+     * @return Hashmap<Integer, String> of hamming values and stations
+     */
     public HashMap<Integer, String> getHammingDist()
     {
         return hammingDist;
