@@ -94,7 +94,7 @@ public class LeftSide
         
         //creates the JLabel and dropdown menu
         compareWith = new JLabel("Compare With:");
-        stationList = new JComboBox<String>(as);
+        stationList = new JComboBox<String>((String[]) onlyForListStations.getListStations().toArray());
         calculateHD = new JButton("Calculate HD");
         compareWithHD.add(compareWith, BorderLayout.WEST);
         compareWithHD.add(stationList, BorderLayout.EAST);
