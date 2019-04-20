@@ -118,14 +118,39 @@ public class HammingDist
         }
         
         //finds the max and min values
+        int max = 0;
         for(int i = 0; i < 26; i++)
         {
-            
+            if(alphabetFrequency[i] > max)
+            {
+                max = alphabetFrequency[i];
+            }
+        }
+        int min = max;
+        for(int i = 0; i < 26; i++)
+        {
+            if(alphabetFrequency[i] < min)
+            {
+                min = alphabetFrequency[i];
+            }
         }
         
         //writes the max and min letters out to a string
+        String maxLetters = "";
+        String minLetters = "";
+        for(int i = 0; i < 26; i++)
+        {
+            if(alphabetFrequency[i] == min)
+            {
+                minLetters = minLetters + (char)(i+65) + "  "; // lines up the int values and the ascii table
+            }
+            if(alphabetFrequency[i] == max)
+            {
+                maxLetters = maxLetters + (char)(i+65) + "  "; // lines up the int values and the ascii table
+            }
+        }
         
-        //returns the string
+        return new String[] {maxLetters, minLetters};
     }
     
 
