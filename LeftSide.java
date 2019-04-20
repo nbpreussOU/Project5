@@ -1,7 +1,6 @@
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 import java.util.HashMap;
 
 import javax.swing.BoxLayout;
@@ -53,7 +52,6 @@ public class LeftSide
     private static JSlider hammingdist;
     private static JScrollPane stationTextPane;
     private static JComboBox<String> stationList;
-    private static HammingDist onlyForListStations;
     
     public static JPanel addLeftSide()
     {
@@ -68,7 +66,6 @@ public class LeftSide
         distancePanel3 = new JPanel(new BorderLayout());
         distancePanel4 = new JPanel(new BorderLayout());
         distanceButtonPanel = new JPanel(new BorderLayout());
-        onlyForListStations = new HammingDist("");
 
         //adds the top JLabel and textare to the left Jpanel     
         enterHammingDistance = new JLabel("Enter Hamming Distance:");
@@ -118,7 +115,7 @@ public class LeftSide
         sliderToStation.add(stationTextPane, BorderLayout.SOUTH);
         
         //converts treeset to array, and uses it to create a dropdown menu
-        String[] result = onlyForListStations.getListStations().toArray(new String[onlyForListStations.getListStations().size()]);
+        String[] result = Window.allStations.getListOfStations().toArray(new String[Window.allStations.getListOfStations().size()]);
         stationList = new JComboBox<String>(result);
 
         //creates the JLabel and dropdown menu
@@ -131,8 +128,7 @@ public class LeftSide
             public void actionPerformed(ActionEvent event)
             {
                 calculateHD();
-            }
-            
+            }       
         });
         
         compareWithHD.add(compareWith, BorderLayout.WEST);
@@ -145,7 +141,28 @@ public class LeftSide
         distance2 = new JLabel("Distance 2");
         distance3 = new JLabel("Distance 3");
         distance4 = new JLabel("Distance 4");
+        
         addStation = new JButton("Add Station");
+        addStation.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0)
+            {
+                //gets the text from the station and removes all the whitespace
+                String newStation = addStationText.getText().trim();
+                
+                //adds the station to the list of stations, and ensures that it is the proper length and uppercase
+                if(newStation.length() == 4)
+                {
+                    Window.allStations.addStation(newStation.toUpperCase());
+                    
+                    //updates the dropdown box
+                    String[] result = Window.allStations.getListOfStations().toArray(new String[Window.allStations.getListOfStations().size()]);
+                    stationList = new JComboBox<String>(result);
+                }  
+            }  
+        });
+        
+        //creates the text fields
         distance0Text = (JTextField)CreateComponents.addTextArea(1, 10, false, true, "\t      ");
         distance1Text = (JTextField)CreateComponents.addTextArea(1, 10, false, true, "\t      ");
         distance2Text = (JTextField)CreateComponents.addTextArea(1, 10, false, true, "\t      ");

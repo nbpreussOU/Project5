@@ -1,4 +1,5 @@
 import java.awt.BorderLayout;
+import java.util.TreeSet;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -15,8 +16,8 @@ public class Window extends JFrame
 {
     private JPanel leftSide;
     private JPanel rightSide;
-   
     private JFrame jf;
+    protected static AllStations allStations;
 
     public Window()
     {
@@ -40,8 +41,8 @@ public class Window extends JFrame
     
     public static void main(String[] args)
     {
+        allStations = new AllStations();
         Window window = new Window();
-    }
-    
+    } 
     
 }
