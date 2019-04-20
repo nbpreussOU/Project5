@@ -30,3 +30,5 @@ were identical to the glimpses seen in the project assignment.
 
 I then generated a UML and javadocs, and they should be uploaded to the 
 git, and the UML will be included in here on github.
+
+![UML](https://github.com/nbpreussOU/Project5/blob/master/UML%20image.jpg)
