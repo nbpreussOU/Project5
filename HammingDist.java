@@ -23,15 +23,112 @@ public class HammingDist
         
     }
     
-    public int getMostCommonLetter()
+    //[0] is commonest letter, [1] is uncommonest
+    public String[] commonUncommonLetter(int hD)
     {
+        HashMap<Integer, String> hm = getHammingDist();
+        String stationsUnbroken = hm.get(hD);
+        int[] alphabetFrequency = new int[26];
+        Arrays.fill(alphabetFrequency,  0);
         
+        //populates the array with number of occurance of each letter
+        for(int i = 0; i < stationsUnbroken.length() - 1; i++)
+        {
+            switch(stationsUnbroken.charAt(i))
+            {
+                case 'A':
+                    alphabetFrequency[0]++;
+                    break;
+                case 'B':
+                    alphabetFrequency[1]++;
+                    break;
+                case 'C':
+                    alphabetFrequency[2]++;
+                    break;
+                case 'D':
+                    alphabetFrequency[3]++;
+                    break;
+                case 'E':
+                    alphabetFrequency[4]++;
+                    break;
+                case 'F':
+                    alphabetFrequency[5]++;
+                    break;
+                case 'G':
+                    alphabetFrequency[6]++;
+                    break;
+                case 'H':
+                    alphabetFrequency[7]++;
+                    break;
+                case 'I':
+                    alphabetFrequency[8]++;
+                    break;
+                case 'J':
+                    alphabetFrequency[9]++;
+                    break;
+                case 'K':
+                    alphabetFrequency[10]++;
+                    break;
+                case 'L':
+                    alphabetFrequency[11]++;
+                    break;
+                case 'M':
+                    alphabetFrequency[12]++;
+                    break;
+                case 'N':
+                    alphabetFrequency[13]++;
+                    break;
+                case 'O':
+                    alphabetFrequency[14]++;
+                    break;
+                case 'P':
+                    alphabetFrequency[15]++;
+                    break;
+                case 'Q':
+                    alphabetFrequency[16]++;
+                    break;
+                case 'R':
+                    alphabetFrequency[17]++;
+                    break;
+                case 'S':
+                    alphabetFrequency[18]++;
+                    break;
+                case 'T':
+                    alphabetFrequency[19]++;
+                    break;
+                case 'U':
+                    alphabetFrequency[20]++;
+                    break;
+                case 'V':
+                    alphabetFrequency[21]++;
+                    break;
+                case 'W':
+                    alphabetFrequency[22]++;
+                    break;
+                case 'X':
+                    alphabetFrequency[23]++;
+                    break;
+                case 'Y':
+                    alphabetFrequency[24]++;
+                    break;
+                case 'Z':
+                    alphabetFrequency[25]++;
+                    break;
+            }
+        }
+        
+        //finds the max and min values
+        for(int i = 0; i < 26; i++)
+        {
+            
+        }
+        
+        //writes the max and min letters out to a string
+        
+        //returns the string
     }
     
-    public int getLeastCommonLetter()
-    {
-        
-    }
+
     
     public String getClosestStation(String stID, int hD)
     {
@@ -185,7 +282,7 @@ public class HammingDist
             //ensures that only station names can be added
             if(strg.length() == 4)
             {
-                stations.add(strg);
+                stations.add(strg.trim());
             }
                 //reads in the next line, if available
                 strg = br.readLine();
