@@ -124,6 +124,17 @@ public class LeftSide
         //creates the JLabel and dropdown menu
         compareWith = new JLabel("Compare With:");
         calculateHD = new JButton("Calculate HD");
+        
+        //adds an event listener and calculates the number of stations at each hamming distance
+        calculateHD.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent event)
+            {
+                calculateHD();
+            }
+            
+        });
+        
         compareWithHD.add(compareWith, BorderLayout.WEST);
         compareWithHD.add(stationList, BorderLayout.EAST);
         compareWithHD.add(calculateHD, BorderLayout.SOUTH);
@@ -168,5 +179,36 @@ public class LeftSide
         leftSide.add(distanceButtonPanel);
         
         return leftSide;
+    }
+    
+    public static void calculateHD()
+    {
+        //initializes necessary variables
+        String station = (String)stationList.getSelectedItem();
+        HammingDist hd = new HammingDist(station);
+        HashMap<Integer,String> hm = hd.getHammingDist();
+        
+        //for loop to loop over all the different hammingDistances
+        int[] arrayDistances = new int[5];
+        String[] numberStationsString = new String[0];
+        
+        for(int i = 0; i < 5; i++)
+        {
+            //gets the list of station names at a certain hamming distance
+            String listStations = hm.get(i);
+            
+            //splits the station list on a newline character, telling how many different stations there are
+            numberStationsString = listStations.split("\n");
+            
+            //taking the number of stations and putting it into an array
+            arrayDistances[i] = numberStationsString.length;
+        }
+        
+        //assigns each JTextField the proper text
+        distance0Text.setText(Integer.toString(arrayDistances[0]));
+        distance1Text.setText(Integer.toString(arrayDistances[1]));
+        distance2Text.setText(Integer.toString(arrayDistances[2]));
+        distance3Text.setText(Integer.toString(arrayDistances[3]));
+        distance4Text.setText(Integer.toString(arrayDistances[4]));    
     }
 }
