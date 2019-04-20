@@ -226,6 +226,7 @@ public class HammingDist
 
     public HashMap<Integer, String> getHammingDistance(String stID)
     {
+        //TODO: get all of the hamming distances output correctly
         int temp;
         int[] intHD = new int[5];
         String[] stringHD = new String[5];
