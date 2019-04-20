@@ -16,7 +16,6 @@ public class CreateComponents
      */
     public static Object addTextArea(int row, int column, boolean editable, boolean field, String str)
     {
-        //TODO: Properly size all text fields
         if(field)
         {
             JTextField jta = new JTextField(str);

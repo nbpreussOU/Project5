@@ -18,9 +18,10 @@ public class HammingDist
         {
             e.printStackTrace();
         }
-        
-        hammingDist = getHammingDistance(str);
-        
+        if(str.length() == 4)
+        {
+            hammingDist = getHammingDistance(str);
+        }        
     }
     
     //[0] is commonest letter, [1] is uncommonest
@@ -237,6 +238,7 @@ public class HammingDist
         //fills the array with information about the hamming distance
         for(String s: ts)
         {
+            System.out.println(s);
             //encapsulates the comparison of strings
             temp = compareStrings(s, stID);
             
@@ -296,11 +298,12 @@ public class HammingDist
     public TreeSet<String> allStations(String filename) throws IOException
     {
         BufferedReader br = new BufferedReader(new FileReader("Mesonet.txt"));
-        String strg;
+        String strg = "";
         TreeSet<String> stations = new TreeSet<>();
         
         //as long as there is another string
         strg = br.readLine();
+        System.out.println(strg);
 
         while(strg != null)
         {
@@ -329,6 +332,5 @@ public class HammingDist
     {
         return hammingDist;
     }
-    
-    
+  
 }
