@@ -53,8 +53,9 @@ public class LeftSide
     private static JScrollPane stationTextPane;
     protected static JComboBox<String> stationList;
     
-    /*
-     * constructor for the left JPanel in the image.  this conforms to the specifications in the assignment
+    /**
+     * creates the left JPanel in the image.  this conforms to the specifications in the assignment
+     * @return a left side JPanel with all the necessary components added in
      */
     public static JPanel addLeftSide()
     {

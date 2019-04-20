@@ -35,6 +35,10 @@ public class RightSide
     
     private static JScrollBar uncommonLetter;
     
+    /**
+     * creates the right JPanel in the image.  this has some interesting statistics done to be "creative"
+     * @return a right side JPanel with all the necessary components added in
+     */
     public static JPanel addRightSide()
     {
         //initialize JPanels
@@ -98,6 +102,10 @@ public class RightSide
         return rightSide;
     }
 
+    /**
+     * it was necessary to break this method away from the main body due to its length
+     * this method sets the text for each of the JTextFields based on the various statistical methods
+     */
     public static void updateStats()
     {
         //set variables for commonly used values
