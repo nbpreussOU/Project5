@@ -92,9 +92,12 @@ public class LeftSide
         showStationText = (JTextArea) CreateComponents.addTextArea(10, 30, true, false, "");
         sliderToStation.add(showStationText, BorderLayout.SOUTH);
         
+        //converts treeset to array, and uses it to create a dropdown menu
+        String[] result = onlyForListStations.getListStations().toArray(new String[onlyForListStations.getListStations().size()]);
+        stationList = new JComboBox<String>(result);
+
         //creates the JLabel and dropdown menu
         compareWith = new JLabel("Compare With:");
-        stationList = new JComboBox<String>((String[]) onlyForListStations.getListStations().toArray());
         calculateHD = new JButton("Calculate HD");
         compareWithHD.add(compareWith, BorderLayout.WEST);
         compareWithHD.add(stationList, BorderLayout.EAST);
